@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muquiz</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="constants.js"></script>
+    <script src="questions.js"></script>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+    <div id="introduction">
+        <h1>Muquiz</h1>
+        <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cumque quod alias explicabo inventore quibusdam,
+            asperiores officiis. Impedit at earum corporis, reiciendis, cupiditate, quia iste molestias est temporibus
+            quam dolorem libero.
+        </p>
+        <button>BEGIN</button>
+    </div>
+
+    <div id="user-info" class="hidden">
+        <h1>Enter your name</h1>
+        <form>
+            <input type="text" name="username" id="username-input"/>
+            <br>
+            <input type="submit" value="Continue"/>
+        </form>
+    </div>
+
+    <div id="difficulty-level" class="hidden">
+        <h1>Select your difficulty level</h1>
+        <form>
+            <select name="level" id="levels">
+                <option value="EASY" selected>Easy</option>
+                <option value="MEDIUM">Medium</option>
+                <option value="HARD">Hard</option>
+            </select>
+            <input type="submit" value="Continue"/>
+        </form>
+    </div>
+
+    <div id="quiz" class="hidden">
+
+        <div id="question-block">
+            <div id="question">
+                <!-- Inject the question -->
+            </div>
+            <div id="answers">
+                <!-- Inject the answer list -->
+            </div>
+        </div>        
+
+    </div>
+
+    <div id="feedback" class="hidden">
+        This is the feedback section.
+    </div>
+
+</body>
+
+</html>
