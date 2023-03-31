@@ -15,23 +15,28 @@ $(document).ready(() => {
 
     $(`#${USER_INFO_SECTION} input[type=submit]`).click((event) => {
         event.preventDefault();
-        window.quizState.name = $(`#${USER_INFO_SECTION} input[name='username']`).val();
-        navigateTo(DIFFICULTY_LEVEL_SECTION);
+        const name = $(`#${USER_INFO_SECTION} input[name='username']`).val();
+        if (isValidUsername(name)) {
+            window.quizState.name = name;
+            navigateTo(DIFFICULTY_LEVEL_SECTION);
+        } else {
+            alert("Invalid username");
+        }
     });
 
     $(`#${DIFFICULTY_LEVEL_SECTION} input[type=submit]`).click((event) => {
-        
+
         event.preventDefault();
-        
+
         const selectedLevel = $("#levels").val();
         quizState.difficultyLevel = selectedLevel;
-        
+
         quizState.questions = generateQuestions(selectedLevel, QUIZ_QUESTION_COUNT);
-        
+
         const elements = [];
 
         for (const q of quizState.questions) {
-            switch(q.type) {
+            switch (q.type) {
                 case "CHECKBOX":
                     elements.push(generateElementForCheckboxQuestion(q))
                     break;
@@ -39,8 +44,6 @@ $(document).ready(() => {
                     break;
             }
         }
-
-        debugger;
 
         $(`#${QUIZ_SECTION}>#question-block #question`).html(
             elements[0][0]
@@ -54,9 +57,6 @@ $(document).ready(() => {
 
     });
 
-
-
-    
 });
 
 // Generate some HTML
@@ -111,4 +111,16 @@ function navigateTo(sectionId) {
 
 function generateRandomNumber(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function isValidUsername(name) {
+
+    const regex = /^[a-zA-Z ]+$/g;
+    // const regex2 = new RegExp("^[a-zA-Z ]+$", "gmi");
+
+    return regex.test(name)
+
+    // ^[a-zA-Z ]+$
+    // This regex matches names which contains only alphabetic
+    // characters.
 }
