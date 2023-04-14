@@ -7,6 +7,8 @@ $(document).ready(() => {
         questions: []
     };
 
+    navigateTo(INTROUCTION_SECTION);
+
     // Event Handlers
 
     $(`#${INTROUCTION_SECTION}>button`).first().click(() => {
@@ -24,40 +26,43 @@ $(document).ready(() => {
         }
     });
 
-    $(`#${DIFFICULTY_LEVEL_SECTION} input[type=submit]`).click((event) => {
-
-        event.preventDefault();
-
-        const selectedLevel = $("#levels").val();
-        quizState.difficultyLevel = selectedLevel;
-
-        quizState.questions = generateQuestions(selectedLevel, QUIZ_QUESTION_COUNT);
-
-        const elements = [];
-
-        for (const q of quizState.questions) {
-            switch (q.type) {
-                case "CHECKBOX":
-                    elements.push(generateElementForCheckboxQuestion(q))
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        $(`#${QUIZ_SECTION}>#question-block #question`).html(
-            elements[0][0]
-        )
-
-        $(`#${QUIZ_SECTION}>#question-block #answers`).html(
-            elements[0][1]
-        )
-
-        navigateTo(QUIZ_SECTION);
-
-    });
+    $(`#${DIFFICULTY_LEVEL_SECTION} input[type=submit]`)
+        .click(difficultyLevelSectionHanlder);
 
 });
+
+function difficultyLevelSectionHanlder(event) {
+
+    event.preventDefault();
+
+    const selectedLevel = $("#levels").val();
+    quizState.difficultyLevel = selectedLevel;
+
+    quizState.questions = generateQuestions(selectedLevel, QUIZ_QUESTION_COUNT);
+
+    const elements = [];
+
+    for (const q of quizState.questions) {
+        switch (q.type) {
+            case "CHECKBOX":
+                elements.push(generateElementForCheckboxQuestion(q))
+                break;
+            default:
+                break;
+        }
+    }
+
+    $(`#${QUIZ_SECTION}>#question-block #question`).html(
+        elements[0][0]
+    )
+
+    $(`#${QUIZ_SECTION}>#question-block #answers`).html(
+        elements[0][1]
+    )
+
+    navigateTo(QUIZ_SECTION);
+
+}
 
 // Generate some HTML
 function generateElementForCheckboxQuestion(question) {
@@ -90,11 +95,9 @@ function generateElementForCheckboxQuestion(question) {
 function generateQuestions(difficultyLevel, questionCount) {
     // 8 questions = 0..7
     const questions = QUESTIONS.filter((question) => question.difficulty === difficultyLevel);
-    // [1, 2, 3, 4, 5, 6, 7, 8]
-    // [3, 2, 1, 4, 7, 6 , 5, 8].slice(0, n..)
-    // 
-    // [3, 2, 1, 4, 7]
-    generateRandomNumber(0, questionCount - 1); // 0..4 #1
+
+    // TODO: Shuffle the questions
+
     return questions.splice(0, questionCount)
 }
 
