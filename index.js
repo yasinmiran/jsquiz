@@ -3,11 +3,11 @@ $(document).ready(() => {
     window.quizState = {
         name: "",
         difficultyLevel: "",
-        currentView: INTROUCTION_SECTION,
+        currentView: DIFFICULTY_LEVEL_SECTION,
         questions: []
     };
 
-    navigateTo(INTROUCTION_SECTION);
+    navigateTo(quizState.currentView);
 
     // Event Handlers
 
@@ -35,11 +35,34 @@ function difficultyLevelSectionHanlder(event) {
 
     event.preventDefault();
 
+    // Step 1: figure out the difficulty level
     const selectedLevel = $("#levels").val();
     quizState.difficultyLevel = selectedLevel;
 
-    quizState.questions = generateQuestions(selectedLevel, QUIZ_QUESTION_COUNT);
+    // Step 2: generate questions
 
+    // Step 2 Option: DYNAMIC --------
+    // if you're dyanmically generate the questions
+    // then randomize the questions here.
+    // quizState.questions = generateQuestions(selectedLevel, QUIZ_QUESTION_COUNT);
+    // Step 2 Option DYNAMIC / Sub step: create the questions
+
+    // Step 2 Option: STATIC --------
+    // if you're manually creating the questions
+
+    debugger;
+    
+    const x = $(`div[data-diff=${selectedLevel}]`); // 4
+    
+    // Shuffle the questions
+
+    [ ...x ].splice(0, QUIZ_QUESTION_COUNT).forEach((question) => {
+        $(question).removeClass("hidden")
+    });
+
+    navigateTo(QUIZ_SECTION);
+        
+    /**
     const elements = [];
 
     for (const q of quizState.questions) {
@@ -51,6 +74,7 @@ function difficultyLevelSectionHanlder(event) {
                 break;
         }
     }
+     */
 
     $(`#${QUIZ_SECTION}>#question-block #question`).html(
         elements[0][0]
@@ -95,8 +119,10 @@ function generateElementForCheckboxQuestion(question) {
 function generateQuestions(difficultyLevel, questionCount) {
     // 8 questions = 0..7
     const questions = QUESTIONS.filter((question) => question.difficulty === difficultyLevel);
+    // [1, 2, 3, 4, 5, 6]
 
     // TODO: Shuffle the questions
+    // [3, 5, 6, 2, 1, 4]
 
     return questions.splice(0, questionCount)
 }
