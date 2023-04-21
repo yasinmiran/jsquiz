@@ -26,15 +26,17 @@
             asperiores officiis. Impedit at earum corporis, reiciendis, cupiditate, quia iste molestias est temporibus
             quam dolorem libero.
         </p>
-        <button>BEGIN</button>
+        <button id="begin-button">BEGIN</button>
     </div>
 
     <div id="user-info" class="hidden">
-        <h1>Enter your name</h1>
+        <h1>Tell me your name</h1>
         <form>
-            <input type="text" name="username" id="username-input" required/>
+            <label for="username">Enter your name</label>
             <br>
-            <input type="submit" value="Continue"/>
+            <input type="text" name="username" id="username-input" required />
+            <br>
+            <input type="submit" value="Continue" />
         </form>
     </div>
 
@@ -46,45 +48,182 @@
                 <option value="MEDIUM">Medium</option>
                 <option value="HARD">Hard</option>
             </select>
-            <input type="submit" value="Continue"/>
+            <input type="submit" value="Continue" />
         </form>
     </div>
 
     <div id="quiz" class="hidden">
 
-        <!-- 
-        <div id="question-block">
-            <div id="question"> -->
-                <!-- Inject the question -->
-            <!-- </div> -->
-            <!-- <div id="answers"> -->
-                <!-- Inject the answer list -->
-            <!-- </div> -->
-        <!-- </div>         -->
-
-        <div class="hidden" data-diff="EASY" data-id="1">
-            <div id="question">This is a sample question</div>
-            <div id="answers">This is a sample answer</div>
+        <div class="question hidden" data-diff="EASY" data-question-id="q1" data-question-type="MULTIPLE">
+            <div class="question-text">
+                <h3>What is the capital of France?</h3>
+            </div>
+            <div class="answers">
+                <form>
+                    <input type="checkbox" name="q1[]" value="Berlin">
+                    <label for="q1a1">Berlin</label><br>
+                    <input type="checkbox" name="q1[]" value="London">
+                    <label for="q1a2">London</label><br>
+                    <input type="checkbox" name="q1[]" value="Paris">
+                    <label for="q1a3">Paris</label><br>
+                    <input type="checkbox" name="q1[]" value="Rome">
+                    <label for="q1a4">Rome</label><br>
+                </form>
+            </div>
         </div>
 
-        <div class="hidden" data-diff="HARD" data-id="1">
-            <div id="question">This is a sample HARD question #1</div>
-            <div id="answers">This is a sample answer</div>
+        <div class="question hidden" data-diff="EASY" data-question-id="q2">
+            <div class="question-text">
+                <h3>What is the symbol for sodium on the periodic table?</h3>
+            </div>
+            <div class="answers">
+                <form>
+                    <input type="radio" id="q2a1" name="q2" value="O" data-diff="EASY">
+                    <label for="q2a1">O</label><br>
+                    <input type="radio" id="q2a2" name="q2" value="Na" data-diff="EASY">
+                    <label for="q2a2">Na</label><br>
+                    <input type="radio" id="q2a3" name="q2" value="Hg" data-diff="EASY">
+                    <label for="q2a3">Hg</label><br>
+                    <input type="radio" id="q2a4" name="q2" value="Ag" data-diff="EASY">
+                    <label for="q2a4">Ag</label><br>
+                </form>
+            </div>
         </div>
 
-        <div class="hidden" data-diff="HARD" data-id="2">
-            <div id="question">This is a sample HARD question #2</div>
-            <div id="answers">This is a sample answer</div>
+        <div class="question hidden" data-diff="EASY" data-question-id="q3">
+            <div class="question-text">
+                <h3>What is the largest continent?</h3>
+            </div>
+            <div class="answers">
+                <form>
+                    <input type="radio" id="q3a1" name="q3" value="Asia" data-diff="EASY">
+                    <label for="q3a1">Asia</label><br>
+                    <input type="radio" id="q3a2" name="q3" value="Africa" data-diff="EASY">
+                    <label for="q3a2">Africa</label><br>
+                    <input type="radio" id="q3a3" name="q3" value="North America" data-diff="EASY">
+                    <label for="q3a3">North America</label><br>
+                    <input type="radio" id="q3a4" name="q3" value="Europe" data-diff="EASY">
+                    <label for="q3a4">Europe</label><br>
+                </form>
+            </div>
         </div>
 
-        <div class="hidden" data-diff="HARD" data-id="3">
-            <div id="question">This is a sample HARD question #3</div>
-            <div id="answers">This is a sample answer</div>
+        <div class="question hidden" data-diff="MEDIUM" data-question-id="q1">
+            <div class="question-text">
+                <h3>What is the smallest planet in our solar system?</h3>
+            </div>
+            <div class="answers">
+                <form>
+                    <input type="radio" id="q4a1" name="q4" value="Mercury" data-diff="MEDIUM">
+                    <label for="q4a1">Mercury</label><br>
+                    <input type="radio" id="q4a2" name="q4" value="Mars" data-diff="MEDIUM">
+                    <label for="q4a2">Mars</label><br>
+                    <input type="radio" id="q4a3" name="q4" value="Pluto" data-diff="MEDIUM">
+                    <label for="q4a3">Pluto</label><br>
+                    <input type="radio" id="q4a4" name="q4" value="Venus" data-diff="MEDIUM">
+                    <label for="q4a4">Venus</label><br>
+                </form>
+            </div>
+        </div>
+        <div class="question hidden" data-diff="MEDIUM" data-question-id="q2">
+            <div class="question-text">
+                <h3>Who is the author of the Harry Potter series?</h3>
+            </div>
+            <div class="answers">
+                <form>
+                    <input type="radio" id="q5a1" name="q5" value="J.K. Rowling" data-diff="MEDIUM">
+                    <label for="q5a1">J.K. Rowling</label><br>
+                    <input type="radio" id="q5a2" name="q5" value="Stephenie Meyer" data-diff="MEDIUM">
+                    <label for="q5a2">Stephenie Meyer</label><br>
+                    <input type="radio" id="q5a3" name="q5" value="Suzanne Collins" data-diff="MEDIUM">
+                    <label for="q5a3">Suzanne Collins</label><br>
+                    <input type="radio" id="q5a4" name="q5" value="J.R.R. Tolkien" data-diff="MEDIUM">
+                    <label for="q5a4">J.R.R. Tolkien</label><br>
+                </form>
+            </div>
         </div>
 
-        <div class="hidden" data-diff="HARD" data-id="4">
-            <div id="question">This is a sample HARD question #4</div>
-            <div id="answers">This is a sample answer</div>
+        <div class="question hidden" data-diff="MEDIUM" data-question-id="q3">
+            <div class="question-text">
+                <h3>Which planet is known as the Red Planet?</h3>
+            </div>
+            <div class="answers">
+                <form>
+                    <input type="radio" id="q6a1" name="q6" value="Mercury" data-diff="MEDIUM">
+                    <label for="q6a1">Mercury</label><br>
+                    <input type="radio" id="q6a2" name="q6" value="Venus" data-diff="MEDIUM">
+                    <label for="q6a2">Venus</label><br>
+                    <input type="radio" id="q6a3" name="q6" value="Mars" data-diff="MEDIUM">
+                    <label for="q6a3">Mars</label><br>
+                    <input type="radio" id="q6a4" name="q6" value="Jupiter" data-diff="MEDIUM">
+                    <label for="q6a4">Jupiter</label><br>
+                </form>
+            </div>
+        </div>
+
+        <div class="question hidden" data-diff="HARD" data-question-id="q1">
+            <div class="question-text">
+                <h3>What is the capital of Iceland?</h3>
+            </div>
+            <div class="answers">
+                <form>
+                    <input type="radio" id="q7a1" name="q7" value="Reykjavik" data-diff="HARD">
+                    <label for="q7a1">Reykjavik</label><br>
+                    <input type="radio" id="q7a2" name="q7" value="Oslo" data-diff="HARD">
+                    <label for="q7a2">Oslo</label><br>
+                    <input type="radio" id="q7a3" name="q7" value="Stockholm" data-diff="HARD">
+                    <label for="q7a3">Stockholm</label><br>
+                    <input type="radio" id="q7a4" name="q7" value="Helsinki" data-diff="HARD">
+                    <label for="q7a4">Helsinki</label><br>
+                </form>
+            </div>
+        </div>
+
+        <div class="question hidden" data-diff="HARD" data-question-id="q2">
+            <div class="question-text">
+                <h3>What is the largest country in South America?</h3>
+            </div>
+            <div class="answers">
+                <form>
+                    <input type="radio" id="q8a1" name="q8" value="Argentina" data-diff="HARD">
+                    <label for="q8a1">Argentina</label><br>
+                    <input type="radio" id="q8a2" name="q8" value="Brazil" data-diff="HARD">
+                    <label for="q8a2">Brazil</label><br>
+                    <input type="radio" id="q8a3" name="q8" value="Chile" data-diff="HARD">
+                    <label for="q8a3">Chile</label><br>
+                    <input type="radio" id="q8a4" name="q8" value="Peru" data-diff="HARD">
+                    <label for="q8a4">Peru</label><br>
+                </form>
+            </div>
+        </div>
+
+        <div class="question hidden" data-diff="HARD" data-question-id="q3">
+            <div class="question-text">
+                <h3>What is the capital city of Australia?</h3>
+            </div>
+            <div class="answers">
+                <form>
+                    <input type="radio" id="q9a1" name="q9" value="Sydney" data-diff="HARD">
+                    <label for="q9a1">Sydney</label><br>
+                    <input type="radio" id="q9a2" name="q9" value="Melbourne" data-diff="HARD">
+                    <label for="q9a2">Melbourne</label><br>
+                    <input type="radio" id="q9a3" name="q9" value="Canberra" data-diff="HARD">
+                    <label for="q9a3">Canberra</label><br>
+                    <input type="radio" id="q9a4" name="q9" value="Brisbane" data-diff="HARD">
+                    <label for="q9a4">Brisbane</label><br>
+                </form>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="flex">
+                <button class="previous-button" onclick="previousQuestion(event)">
+                    Previous
+                </button>
+                <button class="next-button" onclick="nextQuestion(event)">
+                    Next
+                </button>
+            </div>
         </div>
 
     </div>
